@@ -22,10 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-
-
-
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -41,7 +37,7 @@ public class MainController{
         log.info(String.format("cat saived %d", savedCat.getAge()));
     }
     
-    @GetMapping("/rest/get/sterAndDester/MVC")
+    @GetMapping("/rest/get/sterAndDester/MVC/addToDB")
     public String deSter() throws JsonProcessingException{
         List<Cat> cats = catRepo.findAll();
         try{
@@ -60,6 +56,11 @@ public class MainController{
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    // @GetMapping("/api/all")
+    // public List<Cat> getAll1Cats(){
+    //     return CatRepo.findAll();
+    // }
 
     @GetMapping("/rest/selectByID")
     public Cat getCat(@RequestParam int id){

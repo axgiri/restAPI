@@ -66,6 +66,10 @@ public class Cat {
         return Objects.hash(name, age, weight);
     }
 
+    public Cat(){
+        
+    }
+
     @Override
     public String toString() {
         return "Cat{" +
