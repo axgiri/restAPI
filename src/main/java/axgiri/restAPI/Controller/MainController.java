@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import axgiri.restAPI.DTO.CatDTO;
 import axgiri.restAPI.Entity.Cat;
 import axgiri.restAPI.Repository.CatRepo;
 
@@ -32,8 +33,12 @@ public class MainController{
     private final ObjectMapper objectMapper;
     
     @PostMapping("/rest/post/addCatToDB")
-    public void addCatToDB(@RequestBody Cat cat){
-        Cat savedCat = catRepo.save(cat);
+    public void addCatToDB(@RequestBody CatDTO catDTO){
+        Cat savedCat = catRepo.save(Cat.builder()
+        .age(catDTO.getAge())
+        .weight(catDTO.getWeight())
+        .name(catDTO.getName())
+        .build());
         log.info(String.format("cat saived %d", savedCat.getAge()));
     }
     

@@ -7,8 +7,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 
 @Entity
+@lombok.Builder
+@AllArgsConstructor
+
 @Table(name = "cats")
 
 public class Cat {
@@ -77,5 +81,8 @@ public class Cat {
                 ", age is " + age +
                 ", weight is " + weight +
                 '}';
+    }
+
+    public class Builder {
     }
 }
